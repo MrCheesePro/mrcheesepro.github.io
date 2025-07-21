@@ -14,9 +14,33 @@
         }
         canvas {
             margin-top: 20px;
-            border: 4px solid #6592c9;
+            border: 4px solid transparent;
             background-color: #222;
+            border-radius: 4px;
+            background-clip: padding-box;
+            position: relative;
         }
+
+        canvas::before {
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(90deg, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, 
+        #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: 8px;
+            animation: rainbowBorder 3s linear infinite;
+        }
+
+@keyframes rainbowBorder {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
         
         .glow {
             animation: glow 2s ease-in-out infinite alternate;
